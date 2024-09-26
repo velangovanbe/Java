@@ -1,0 +1,337 @@
+In Java, **Collection Framework** has a rich set of concrete classes that implement the various interfaces (`List`, `Set`, `Queue`, `Map`). These classes provide specific implementations of the interfaces, each with its own strengths and weaknesses. Here are the major collection classes and their typical use cases:
+
+### 1. **ArrayList** (Implements `List` Interface)
+- Resizable array, allowing random access to elements by index.
+- Allows duplicate elements and maintains insertion order.
+- Best for frequent read access, but resizing and inserting elements in the middle are costly operations.
+
+#### Example:
+```java
+import java.util.ArrayList;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        System.out.println(list);  // Output: [Apple, Banana, Cherry]
+    }
+}
+```
+
+### 2. **LinkedList** (Implements `List`, `Queue`, and `Deque` Interfaces)
+- Doubly linked list implementation.
+- Elements are linked through a chain, so insertions and deletions are efficient.
+- Supports both list operations (by index) and queue operations (FIFO, LIFO).
+
+#### Example:
+```java
+import java.util.LinkedList;
+
+public class LinkedListExample {
+    public static void main(String[] args) {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("Dog");
+        list.addFirst("Cat");  // Insert at the beginning
+        list.addLast("Elephant");  // Insert at the end
+        System.out.println(list);  // Output: [Cat, Dog, Elephant]
+    }
+}
+```
+
+### 3. **HashSet** (Implements `Set` Interface)
+- Stores elements in a hash table.
+- No duplicates allowed and no guaranteed order of elements.
+- Provides constant-time performance for basic operations like add, remove, and contains.
+
+#### Example:
+```java
+import java.util.HashSet;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        HashSet<Integer> set = new HashSet<>();
+        set.add(10);
+        set.add(20);
+        set.add(10);  // Duplicate entry, will not be added
+        System.out.println(set);  // Output: [10, 20]
+    }
+}
+```
+
+### 4. **LinkedHashSet** (Implements `Set` Interface)
+- Like `HashSet`, but maintains insertion order.
+- Uses a linked list to store elements in the order they were inserted.
+
+#### Example:
+```java
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetExample {
+    public static void main(String[] args) {
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+        set.add("Java");
+        set.add("Python");
+        set.add("JavaScript");
+        System.out.println(set);  // Output: [Java, Python, JavaScript]
+    }
+}
+```
+
+### 5. **TreeSet** (Implements `NavigableSet` Interface)
+- Stores elements in a sorted (natural or custom) order.
+- No duplicates allowed.
+- Useful when you need a sorted set or range-based operations.
+
+#### Example:
+```java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(40);
+        set.add(20);
+        set.add(30);
+        System.out.println(set);  // Output: [20, 30, 40]
+    }
+}
+```
+
+### 6. **PriorityQueue** (Implements `Queue` Interface)
+- Implements a priority-based queue.
+- The elements are ordered based on their natural ordering or by a `Comparator`.
+- The element with the highest priority is removed first.
+
+#### Example:
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(50);
+        pq.add(20);
+        pq.add(40);
+        System.out.println(pq.poll());  // Output: 20 (Smallest element)
+    }
+}
+```
+
+### 7. **HashMap** (Implements `Map` Interface)
+- Stores key-value pairs in a hash table.
+- No order maintained for the keys.
+- Allows `null` keys and values.
+
+#### Example:
+```java
+import java.util.HashMap;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("One", 1);
+        map.put("Two", 2);
+        map.put("Three", 3);
+        System.out.println(map);  // Output: {One=1, Two=2, Three=3}
+    }
+}
+```
+
+### 8. **LinkedHashMap** (Implements `Map` Interface)
+- Like `HashMap`, but maintains insertion order.
+- Useful when you want to iterate over the map in the order of insertion.
+
+#### Example:
+```java
+import java.util.LinkedHashMap;
+
+public class LinkedHashMapExample {
+    public static void main(String[] args) {
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+        map.put("A", 100);
+        map.put("B", 200);
+        map.put("C", 300);
+        System.out.println(map);  // Output: {A=100, B=200, C=300}
+    }
+}
+```
+
+### 9. **TreeMap** (Implements `NavigableMap` Interface)
+- Stores key-value pairs in a sorted (ascending) order based on the keys.
+- You can provide a custom comparator for custom sorting.
+
+#### Example:
+```java
+import java.util.TreeMap;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        TreeMap<String, Integer> map = new TreeMap<>();
+        map.put("Zebra", 100);
+        map.put("Apple", 50);
+        map.put("Monkey", 70);
+        System.out.println(map);  // Output: {Apple=50, Monkey=70, Zebra=100}
+    }
+}
+```
+
+### 10. **Stack** (Implements `List` Interface via `Vector`)
+- Last-In-First-Out (LIFO) stack.
+- Operations include `push()`, `pop()`, and `peek()`.
+
+#### Example:
+```java
+import java.util.Stack;
+
+public class StackExample {
+    public static void main(String[] args) {
+        Stack<String> stack = new Stack<>();
+        stack.push("First");
+        stack.push("Second");
+        stack.push("Third");
+        System.out.println(stack.pop());  // Output: Third (Last element added)
+    }
+}
+```
+
+### 11. **Vector** (Implements `List` Interface)
+- Synchronized version of `ArrayList`. All operations are thread-safe.
+- Not commonly used because of synchronization overhead.
+
+#### Example:
+```java
+import java.util.Vector;
+
+public class VectorExample {
+    public static void main(String[] args) {
+        Vector<String> vector = new Vector<>();
+        vector.add("A");
+        vector.add("B");
+        vector.add("C");
+        System.out.println(vector);  // Output: [A, B, C]
+    }
+}
+```
+
+### Summary:
+- **List Implementations**: `ArrayList`, `LinkedList`, `Vector`
+- **Set Implementations**: `HashSet`, `LinkedHashSet`, `TreeSet`
+- **Queue Implementations**: `PriorityQueue`, `LinkedList`
+- **Map Implementations**: `HashMap`, `LinkedHashMap`, `TreeMap`
+- **Stack**: LIFO stack based on `Vector`.
+
+These classes offer different performance and functionality benefits, depending on your needs (e.g., sorted data, fast random access, duplicate prevention).
+
+
+
+
+
+In Java, **Collection Framework** provides a set of classes and interfaces to manage groups of objects in a standard way. The key interfaces include:
+
+### 1. **Collection Interface**
+- It is the root interface of the Collection framework.
+- It represents a group of objects, known as elements.
+- Methods in the Collection interface are available to all its subtypes.
+
+Common methods:
+- `add(E e)`: Adds an element to the collection.
+- `remove(Object o)`: Removes an element from the collection.
+- `size()`: Returns the size of the collection.
+- `iterator()`: Returns an iterator over the elements in this collection.
+
+#### Example:
+```java
+Collection<String> collection = new ArrayList<>();
+collection.add("Apple");
+collection.add("Banana");
+System.out.println(collection); // Output: [Apple, Banana]
+```
+
+### 2. **List Interface**
+- An ordered collection (also known as a sequence).
+- Elements can be accessed by their index.
+- Duplicate elements are allowed.
+
+Implementations:
+- `ArrayList`: Resizable array implementation.
+- `LinkedList`: Doubly-linked list implementation.
+
+#### Example:
+```java
+List<String> list = new ArrayList<>();
+list.add("Dog");
+list.add("Cat");
+list.add("Dog"); // Duplicates allowed
+System.out.println(list); // Output: [Dog, Cat, Dog]
+```
+
+### 3. **Set Interface**
+- Represents a collection that does not allow duplicate elements.
+- Set has no positional access like List (no index-based access).
+
+Implementations:
+- `HashSet`: Unordered collection, backed by a hash table.
+- `LinkedHashSet`: Maintains the insertion order.
+- `TreeSet`: Sorted set, elements are sorted in natural order.
+
+#### Example:
+```java
+Set<Integer> set = new HashSet<>();
+set.add(1);
+set.add(2);
+set.add(1); // Duplicate element
+System.out.println(set); // Output: [1, 2] (No duplicates)
+```
+
+### 4. **Queue Interface**
+- A collection used to hold multiple elements before processing.
+- Follows **FIFO** (First In First Out) principle.
+  
+Implementations:
+- `PriorityQueue`: Orders elements based on their priority.
+- `LinkedList`: Can also be used as a queue.
+
+#### Example:
+```java
+Queue<String> queue = new LinkedList<>();
+queue.add("First");
+queue.add("Second");
+queue.add("Third");
+System.out.println(queue.poll()); // Output: First (Removes the first element)
+```
+
+### 5. **Map Interface** (It is not part of the Collection hierarchy)
+- Represents a collection of key-value pairs.
+- Keys are unique, but values can be duplicated.
+
+Implementations:
+- `HashMap`: Unordered map.
+- `LinkedHashMap`: Maintains insertion order.
+- `TreeMap`: Sorted map by natural ordering of keys.
+
+#### Example:
+```java
+Map<String, Integer> map = new HashMap<>();
+map.put("Apple", 1);
+map.put("Banana", 2);
+System.out.println(map); // Output: {Apple=1, Banana=2}
+```
+
+### Hierarchy Overview:
+- **Collection Interface**
+  - **List Interface**: ArrayList, LinkedList
+  - **Set Interface**: HashSet, LinkedHashSet, TreeSet
+  - **Queue Interface**: PriorityQueue, LinkedList
+
+- **Map Interface**
+  - **HashMap**
+  - **TreeMap**
+
+### Common Methods in Collection Classes:
+- `addAll(Collection c)`: Adds all elements of the collection.
+- `clear()`: Removes all elements.
+- `contains(Object o)`: Checks if the collection contains a specific element.
+- `isEmpty()`: Checks if the collection is empty.
+- `removeAll(Collection c)`: Removes all elements in the specified collection.
